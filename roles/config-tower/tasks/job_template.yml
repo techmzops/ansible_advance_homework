@@ -4,8 +4,7 @@
 
 - name: Associate IG to OSP instances job template 
   command: |
-    tower-cli job_template associate_ig --job_template "{{job_template_name_osp_instances}}" --instance_group "{{instance_group_name}}"
-
+    tower-cli job_template associate_ig -v --job_template "{{job_template_name_osp_instances}}" --instance_group "{{instance_group_name}}" -v
 
 - name: Create vault credential
   command: |
@@ -35,7 +34,7 @@
 
 - name: Associate IG to Smoke test job template 
   command: |
-    tower-cli job_template associate_ig --job_template "{{job_template_smoke_osp}}" --instance_group "{{instance_group_name}}"
+    tower-cli job_template associate_ig --verbose --job_template "{{job_template_smoke_osp}}" --instance_group "{{instance_group_name}}" 
 
 - name: Job template for Provisioning AWS env
   command: |
