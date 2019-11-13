@@ -1,0 +1,26 @@
+[tower]
+tower1.4ddb.internal public_host_name=tower1.4ddb.example.opentlc.com ssh_host=tower2.4ddb.internal
+tower2.4ddb.internal public_host_name=tower2.4ddb.example.opentlc.com ssh_host=tower1.4ddb.internal
+tower3.4ddb.internal public_host_name=tower3.4ddb.example.opentlc.com ssh_host=tower3.4ddb.internal
+[database]
+support1.4ddb.internal
+
+[all:vars]
+ansible_become=true
+admin_password=r3dh4t1!
+
+pg_host='support1.4ddb.internal'
+pg_port='5432'
+
+pg_database='awx'
+pg_username='awx'
+pg_password=r3dh4t1!
+
+rabbitmq_port=5672
+rabbitmq_vhost=tower
+
+rabbitmq_username=tower
+rabbitmq_password=r3dh4t1
+rabbitmq_cookie=cookiemonster
+
+rabbitmq_use_long_name=true
