@@ -1,5 +1,0 @@
----
-- include: vars.yml
-
-- include_tasks: tasks.yml
-  when: not awx_install_exec_vars_only | bool
