@@ -1,15 +1,30 @@
 [tower]
-tower1.4ddb.internal public_host_name=tower1.4ddb.example.opentlc.com ssh_host=tower2.4ddb.internal
-tower2.4ddb.internal public_host_name=tower2.4ddb.example.opentlc.com ssh_host=tower1.4ddb.internal
-tower3.4ddb.internal public_host_name=tower3.4ddb.example.opentlc.com ssh_host=tower3.4ddb.internal
+tower1.6e06.internal public_host_name=tower1.6e06.example.opentlc.com ssh_host=tower1.6e06.internal
+tower2.6e06.internal public_host_name=tower2.6e06.example.opentlc.com ssh_host=tower3.6e06.internal
+tower3.6e06.internal public_host_name=tower3.6e06.example.opentlc.com ssh_host=tower2.6e06.internal
 [database]
-support1.4ddb.internal
+support1.6e06.internal
+
+[instance_group_towerosp]
+tower2.6e06.internal public_host_name=tower2.6e06.example.opentlc.com ssh_host=tower3.6e06.internal
+tower3.6e06.internal public_host_name=tower3.6e06.example.opentlc.com ssh_host=tower2.6e06.internal
+
+[isolated_group_osp]
+workstation-9b01.rhpds.opentlc.com
+
+[isolated_group_osp:vars]
+controller=towerosp
+ansible_connection=ssh
+ansible_user=cloud-user
+ansible_ssh_private_key_file=/root/.ssh/openstack.pem
+ansible_become=true
+
 
 [all:vars]
 ansible_become=true
 admin_password=r3dh4t1!
 
-pg_host='support1.4ddb.internal'
+pg_host='support1.6e06.internal'
 pg_port='5432'
 
 pg_database='awx'
@@ -24,3 +39,9 @@ rabbitmq_password=r3dh4t1
 rabbitmq_cookie=cookiemonster
 
 rabbitmq_use_long_name=true
+# BEGIN ANSIBLE MANAGED BLOCK
+[isolated_group_osp]
+workstation-9b01.rhpds.opentlc.com ansible_user='cloud-user' ansible_ssh_private_key_file='~/.ssh/openstack.pem' ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+[isolated_group_osp:vars]
+controller=tower
+# END ANSIBLE MANAGED BLOCK
