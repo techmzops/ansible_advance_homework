@@ -1,0 +1,18 @@
+{
+    "description": "", 
+    "name": "", 
+    "spec": [
+      {
+        "question_description": "Enter Prod GUID", 
+        "min": 4, 
+        "default": "", 
+        "max": 4, 
+        "required": true, 
+        "choices": "", 
+        "new_question": true, 
+        "variable": "OSP_GUID", 
+        "question_name": "Prod GUID", 
+        "type": "text"
+      }
+    ]
+  }
